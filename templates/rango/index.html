@@ -7,7 +7,14 @@
     
 {% block body_block %}    
          <h1>Rango says...</h1>
-         <div> hey there partner! </div>
+
+         <div> {% if user.is_authenticated %}
+		   howdy {{ user.username }}!
+	       {% else %}
+		   hey there partner!
+               {% endif %}
+	 </div>
+
 	 <h2> Most Liked Categories </h2>
     
     <div>
@@ -45,7 +52,6 @@
     <div>
         <a href="{% url 'about' %}">About Rango</a><br />
         <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-	<a href="{% url 'add_category' %}">Add a New Category</a><br />
     </div>
 
 {% endblock %}
